@@ -29,6 +29,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "402377242b04be3f4f0f3720bd952df86e946c30" },
   "peek.nvim": { "branch": "master", "commit": "5820d937d5414baea5f586dc2a3d912a74636e5b" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
+  "rose-pine": { "branch": "main", "commit": "7718965bdd1526b233f082da17e88b8bde7a7e6e" },
   "telescope.nvim": { "branch": "master", "commit": "415af52339215926d705cccc08145f3782c4d132" },
   "ui": { "branch": "v3.0", "commit": "7f70aac4ad4741c48a2d2f5abac84c06de226c5f" },
   "volt": { "branch": "main", "commit": "3bedb1576db574af160643eea7df3b09dbe5ee9c" },

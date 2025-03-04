@@ -14,7 +14,22 @@ local lazy_config = require "configs.lazy"
 
 -- load plugins
 require("lazy").setup({
+  -- lua/plugins/rose-pine.lua
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
+    end
+  },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
   {
     'barrett-ruth/live-server.nvim',
     build = 'pnpm add -g live-server',
@@ -42,9 +57,22 @@ require("lazy").setup({
 
   { import = "plugins" },
 }, lazy_config)
+require('rose-pine').setup({
+  styles = {
+    italic = true, -- Enables italics globally
+  }
+})
+
+
+vim.api.nvim_set_hl(0, "Comment", { fg = "#6e6a86", italic = true })  -- Italic comments
+vim.api.nvim_set_hl(0, "Function", { fg = "#9ccfd8", italic = true }) -- Italic functions
+vim.api.nvim_set_hl(0, "Keyword", { fg = "#eb6f92", italic = true })  -- Italic keywords
+vim.api.nvim_set_hl(0, "Type", { fg = "#f6c177", italic = true })     -- Italic type names
+vim.api.nvim_set_hl(0, "String", { fg = "#f6c177", italic = false })  -- Keep strings normal
+
 
 -- setup must be called before loading
-
+require("ibl").setup()
 
 -- Configuration for nvim-cmp
 local cmp = require "cmp"
@@ -167,3 +195,33 @@ require('peek').setup({
   throttle_time = 'auto', -- minimum amount of time in milliseconds
   -- that has to pass before starting new render
 })
+
+local highlight = {
+  "Rainbow1",
+  "Rainbow2",
+  "Rainbow3",
+  "Rainbow4",
+  "Rainbow5",
+  "Rainbow6",
+}
+
+local hooks = require "ibl.hooks"
+
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+  vim.api.nvim_set_hl(0, "Rainbow1", { fg = "#eb6f92", blend = 30 }) -- Rose (Pink)
+  vim.api.nvim_set_hl(0, "Rainbow2", { fg = "#f6c177", blend = 30 }) -- Gold (Yellow-Orange)
+  vim.api.nvim_set_hl(0, "Rainbow3", { fg = "#9ccfd8", blend = 30 }) -- Foam (Cyan)
+  vim.api.nvim_set_hl(0, "Rainbow4", { fg = "#c4a7e7", blend = 30 }) -- Iris (Purple)
+  vim.api.nvim_set_hl(0, "Rainbow5", { fg = "#31748f", blend = 30 }) -- Pine (Dark Cyan)
+  vim.api.nvim_set_hl(0, "Rainbow6", { fg = "#e0def4", blend = 30 }) -- Text (Soft White)
+end)
+
+require("ibl").setup {
+  indent = {
+    char = "┆", -- Thin dotted line alternative
+    highlight = highlight,
+  }
+}
+
+
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"

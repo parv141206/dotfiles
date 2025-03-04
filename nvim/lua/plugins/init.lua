@@ -97,6 +97,13 @@ return {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
 
   -- install with yarn or npm
   {
