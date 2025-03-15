@@ -54,22 +54,34 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  {
+    "hedyhli/outline.nvim",
+    config = function()
+      -- Example mapping to toggle outline
+      vim.keymap.set("n", "<leader>", "<cmd>Outline<CR>",
+        { desc = "Toggle Outline" })
 
+      require("outline").setup {
+        -- Your setup opts here (leave empty to use defaults)
+      }
+    end,
+  },
   { import = "plugins" },
 }, lazy_config)
-require('rose-pine').setup({
-  styles = {
-    italic = true, -- Enables italics globally
-  }
-})
+require("outline").setup({})
+-- require('rose-pine').setup({
+--   styles = {
+--     italic = true, -- Enables italics globally
+--   }
+-- })
 
-
-vim.api.nvim_set_hl(0, "Comment", { fg = "#6e6a86", italic = true })  -- Italic comments
-vim.api.nvim_set_hl(0, "Function", { fg = "#9ccfd8", italic = true }) -- Italic functions
-vim.api.nvim_set_hl(0, "Keyword", { fg = "#eb6f92", italic = true })  -- Italic keywords
-vim.api.nvim_set_hl(0, "Type", { fg = "#f6c177", italic = true })     -- Italic type names
-vim.api.nvim_set_hl(0, "String", { fg = "#f6c177", italic = false })  -- Keep strings normal
-
+--
+-- vim.api.nvim_set_hl(0, "Comment", { fg = "#6e6a86", italic = true })  -- Italic comments
+-- vim.api.nvim_set_hl(0, "Function", { fg = "#9ccfd8", italic = true }) -- Italic functions
+-- vim.api.nvim_set_hl(0, "Keyword", { fg = "#eb6f92", italic = true })  -- Italic keywords
+-- vim.api.nvim_set_hl(0, "Type", { fg = "#f6c177", italic = true })     -- Italic type names
+-- vim.api.nvim_set_hl(0, "String", { fg = "#f6c177", italic = false })  -- Keep strings normal
+--
 
 -- setup must be called before loading
 require("ibl").setup()
@@ -225,3 +237,21 @@ require("ibl").setup {
 
 
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+
+-- vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true })
+--
+-- Enable relative numbering
+vim.opt.relativenumber = true
+vim.opt.number = true -- Keeps the current line's absolute number visible
+
+-- Disable arrow keys in normal, insert, and visual modes
+-- local modes = { 'n', 'i', 'v' }
+-- for _, mode in ipairs(modes) do
+--   vim.api.nvim_set_keymap(mode, '<Up>', '<Nop>', { noremap = true, silent = true })
+--   vim.api.nvim_set_keymap(mode, '<Down>', '<Nop>', { noremap = true, silent = true })
+--   vim.api.nvim_set_keymap(mode, '<Left>', '<Nop>', { noremap = true, silent = true })
+--   vim.api.nvim_set_keymap(mode, '<Right>', '<Nop>', { noremap = true, silent = true })
+-- end
