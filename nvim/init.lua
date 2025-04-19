@@ -16,6 +16,11 @@ local lazy_config = require "configs.lazy"
 require("lazy").setup({
   -- lua/plugins/rose-pine.lua
   {
+    "chrisbra/csv.vim",
+    ft = "csv"
+  },
+
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
